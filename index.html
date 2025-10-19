@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus Hunter - Baixe o Jogo</title>
+    <meta name="description" content="Baixe Virus Hunter para Windows e Linux. Entre em um mundo digital e elimine vírus maliciosos neste jogo de ação emocionante.">
+    <meta name="pietro e marcão" content="Virus Hunter">
+    
+    <meta property="og:title" content="Virus Hunter - Baixe o Jogo">
+    <meta property="og:description" content="Baixe Virus Hunter para Windows e Linux. Entre em um mundo digital e elimine vírus maliciosos neste jogo de ação emocionante.">
+    <meta property="og:type" content="site">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: hsl(220, 20%, 8%);
+            --foreground: hsl(150, 100%, 95%);
+            --card: hsl(220, 15%, 12%);
+            --card-foreground: hsl(150, 100%, 95%);
+            --primary: hsl(142, 76%, 45%);
+            --primary-foreground: hsl(220, 20%, 8%);
+            --secondary: hsl(180, 70%, 50%);
+            --muted-foreground: hsl(150, 20%, 65%);
+            --border: hsl(220, 15%, 18%);
+            --shadow-glow: 0 0 40px hsla(142, 76%, 45%, 0.3);
+            --shadow-card: 0 8px 32px hsla(142, 76%, 45%, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            transition: transform 0.3s;
+        }
+
+        .logo-link:hover .logo-img {
+            transform: scale(1.1) rotate(12deg);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding-top: 6rem;
+            padding-bottom: 4rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .download-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            width: 128px;
+            height: 128px;
+        }
+
+        .icon-glow {
+            position: absolute;
+            inset: 0;
+            background: rgba(34, 197, 94, 0.2);
+            border-radius: 50%;
+            filter: blur(2rem);
+            transition: all 0.3s;
+        }
+
+        .glass-card:hover .icon-glow {
+            background: rgba(34, 197, 94, 0.4);
+        }
+
+        .icon-img {
+            position: relative;
+            z-index: 10;
+            width: 128px;
+            height: 128px;
+            transition: transform 0.3s;
+        }
+
+        .glass-card:hover .icon-img {
+            transform: scale(1.1);
+        }
+
+        .download-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .download-card .subtitle {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
+            margin-top: -0.5rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            font-weight: bold;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: hsl(142, 76%, 40%);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Info Section */
+        .info-card {
+            max-width: 48rem;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .info-card h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            font-size: 1.125rem;
+            line-height: 1.75;
+        }
+
+        /* Development Page */
+        .dev-content {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .dev-title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .dev-intro {
+            font-size: 1.25rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-icon.primary {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--primary);
+        }
+
+        .feature-icon.secondary {
+            background: rgba(34, 211, 238, 0.2);
+            color: var(--secondary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--muted-foreground);
+        }
+
+        .about-section {
+            margin-top: 2rem;
+        }
+
+        .about-section h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(4px);
+        }
+
+        footer .container {
+            padding: 1.5rem 1rem;
+        }
+
+        footer p {
+            text-align: center;
+            color: var(--muted-foreground);
+        }
+
+        footer .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Icons SVG */
+        .icon-svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dev-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo-link" onclick="navigateTo('home'); return false;">
+                <img src="logo virus hunter EBA.png" alt="Virus Hunter Logo" class="logo-img">
+                <span class="logo-text">VIRUS HUNTER</span>
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link" id="nav-home" onclick="navigateTo('home'); return false;">INÍCIO</a>
+                <a href="#" class="nav-link" id="nav-dev" onclick="navigateTo('desenvolvimento'); return false;">DESENVOLVIMENTO</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="page-home" class="page active">
+            <div class="container">
+                <div class="hero">
+                    <h1>Baixe Virus Hunter</h1>
+                    <p>Escolha a versão para o seu sistema operacional e comece sua jornada como caçador de vírus</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="glass-card download-card">
+                        <div class="icon-wrapper">
+                            <div class="icon-glow"></div>
+                            <img src="https://m.media-amazon.com/images/I/61SC+vgMGfL.jpg" alt="Linux" class="icon-img">
+                        </div>
+                        <div>
+                            <h3>Linux</h3>
+                        </div>
+                        <a href="#" class="btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+
+                    <div class="glass-card download-card">
+                        <div class="icon-wrapper">
+                            <div class="icon-glow"></div>
+                            <img src="https://www.sketchappsources.com/resources/source-image/windows-logo-alesiamjau.png" alt="Windows" class="icon-img">
+                        </div>
+                        <div>
+                            <h3>Windows</h3>
+                            <p class="subtitle">x64</p>
+                        </div>
+                        <a href="#" class="btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+
+                    <div class="glass-card download-card">
+                        <div class="icon-wrapper">
+                            <div class="icon-glow"></div>
+                            <img src="https://www.sketchappsources.com/resources/source-image/windows-logo-alesiamjau.png" alt="Windows" class="icon-img">
+                        </div>
+                        <div>
+                            <h3>Windows</h3>
+                            <p class="subtitle">x86</p>
+                        </div>
+                        <a href="#" class="btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glass-card info-card">
+                    <h2>Pronto para a Caça?</h2>
+                    <p>
+                        Entre em um mundo digital repleto de desafios, onde sua missão é eliminar 
+                        vírus maliciosos e proteger o sistema. Baixe agora e prove suas habilidades!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Page -->
+        <div id="page-desenvolvimento" class="page">
+            <div class="container">
+                <div class="dev-content">
+                    <h1 class="dev-title">Desenvolvimento</h1>
+                    
+                    <div class="glass-card dev-intro">
+                        <p>
+                            Virus Hunter é um jogo de ação emocionante onde você enfrenta ondas de vírus digitais 
+                            em um mundo cibernético. Proteja o sistema e elimine as ameaças antes que seja tarde demais!
+                        </p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="glass-card feature-card">
+                            <div class="feature-icon primary">🎮</div>
+                            <h3>Jogabilidade Dinâmica</h3>
+                            <p>Controles intuitivos e gameplay viciante que mantém você na ação.</p>
+                        </div>
+
+                        <div class="glass-card feature-card">
+                            <div class="feature-icon secondary">🛡️</div>
+                            <h3>Múltiplos Níveis</h3>
+                            <p>Desafios progressivos que testam suas habilidades de caçador de vírus.</p>
+                        </div>
+
+                        <div class="glass-card feature-card">
+                            <div class="feature-icon primary">💻</div>
+                            <h3>Multiplataforma</h3>
+                            <p>Disponível para Windows (x86/x64) e Linux, jogue onde quiser.</p>
+                        </div>
+
+                        <div class="glass-card feature-card">
+                            <div class="feature-icon secondary">⚡</div>
+                            <h3>Performance Otimizada</h3>
+                            <p>Motor de jogo leve e otimizado para máxima performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card about-section">
+                        <h2>Sobre o Projeto</h2>
+                        <p>
+                            Virus Hunter foi desenvolvido com paixão e dedicação para proporcionar uma 
+                            experiência de jogo única. Cada aspecto do jogo foi cuidadosamente projetado 
+                            para criar uma atmosfera imersiva de combate digital.
+                        </p>
+                        <p>
+                            O jogo está em constante evolução, com atualizações regulares trazendo novos 
+                            conteúdos, melhorias de gameplay e correções baseadas no feedback da comunidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                Site desenvolvido para download do jogo virus hunter. © 2025 
+                <span class="highlight">Virus Hunter</span>.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        function navigateTo(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            
+            // Show selected page
+            const targetPage = page === 'home' ? 'page-home' : 'page-desenvolvimento';
+            document.getElementById(targetPage).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            const navId = page === 'home' ? 'nav-home' : 'nav-dev';
+            document.getElementById(navId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Set initial active nav link
+        document.getElementById('nav-home').classList.add('active');
+    </script>
+</body>
+</html>
